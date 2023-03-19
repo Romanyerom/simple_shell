@@ -1,13 +1,2 @@
 #!/bin/bash
-
-# Get the C file name from the environment variable
-c_file=$CFILE
-
-# Generate the assembly code in Intel synta
-gcc -S -masm=intel $c_file
-
-# Rename the output file with the .s extension
-asm_file="${c_file%.c}.s"
-mv "${c_file%.c}.s" "$asm_file"
-export CFILE=main.c
-./generate_asm.sh
+gcc -S -masm=intel $CFILE -o "${CFILE%.c}.s"
