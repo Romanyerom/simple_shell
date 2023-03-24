@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	unsigned long int fib1 = 1, fib2 = 2, sum;
+	unsigned long int a = 1, b = 2, sum;
 	int i;
 
 	printf("%lu, %lu", a, b);
