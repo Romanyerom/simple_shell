@@ -26,5 +26,5 @@ int main(void)
 		n2 = next;
 	}
 
-	return 0;
+	return (0);
 }
