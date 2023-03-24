@@ -8,18 +8,19 @@
 
 int main(void)
 {
-	unsigned long int fib1 = 1, fib2 = 2, next_fib;
+	unsigned long int fib1 = 1, fib2 = 2, sum;
 	int i;
 
-	printf("%lu, %lu", fib1, fib2);
+	printf("%lu, %lu", a, b);
 
 	for (i = 2; i < 98; i++)
 	{
-		next_fib = fib1 + fib2;
-		printf(", %lu", next_fib);
-		fib1 = fib2;
-		fib2 = next_fib;
+		sum = a + b;
+		printf(", %lu", sum);
+		a = b;
+		b = sum;
 	}
+
 	printf("\n");
 
 	return (0);
