@@ -8,20 +8,21 @@
 
 int main(void)
 {
-	unsigned long int a = 1, b = 2, sum;
-	int i;
+	int i, n1 = 1, n2 = 2, next;
 
-	printf("%lu, %lu", a, b);
+	printf("%d, %d, ", n1, n2);
 
-	for (i = 2; i < 98; i++)
+	for (i = 3; i <= 98; i++)
 	{
-		sum = a + b;
-		printf(", %lu", sum);
-		a = b;
-		b = sum;
+		next = n1 + n2;
+		printf("%d", next);
+
+		if (i < 98)
+		{
+			printf(", ");
+		}
+
+		n1 = n2;
+		n2 = next;
 	}
-
-	printf("\n");
-
-	return (0);
 }
