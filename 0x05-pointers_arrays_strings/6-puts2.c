@@ -3,7 +3,9 @@
 /**
  * puts2 - Print strings
  * @str: function parameter
+ * Return: 0
  */
+
 void puts2(char *str)
 {
 	int i;
