@@ -10,21 +10,22 @@
 
 char *leet(char *str)
 {
-	char *leetspeak = str;
-	char *letters = "aAeEoOtTlL";
-	char *numbers = "44330711";
 	int i, j;
+	char leet[] = "aAeEoOtTlL";
+	char nums[] = "4433007711";
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		for (j = 0; letters[j] != '\0'; j++)
+		for (j = 0; j < 10; j++)
 		{
-			if (str[i] == letters[j])
+			if (str[i] == leet[j])
 			{
-				str[i] = numbers[j];
+				str[i] = nums[j];
+				break;
 			}
 		}
 	}
+	str[i] = '\0';
 
-	return (leetspeak);
+	return str;
 }
