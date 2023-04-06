@@ -6,17 +6,22 @@
  *
  * Return: 1 if n is prime, 0 otherwise
  */
+
+int is_prime_helper(int n, int i);
+
 int is_prime_number(int n)
 {
-	/* check if n is less than 2 or even */
-	if (n < 2 || (n % 2 == 0 && n != 2))
-		return (0);
-	/* check for factors up to the square root of n */
 	int i;
-	for (i = 3; i * i <= n; i += 2)
+
+	if (n <= 1)
+		return (0);
+
+	i = 2;
+	while (i <= n / 2)
 	{
 		if (n % i == 0)
 			return (0);
+		i++;
 	}
 	return (1);
 }
