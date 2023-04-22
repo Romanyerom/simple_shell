@@ -1,34 +1,37 @@
-#include "main.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "function_pointers.h"
 
 /**
- * simple_print_buffer - prints buffer in hexa
- * @buffer: the address of memory to print
- * @size: the size of the memory to print
+ * is_98 - check if a number is equal to 98
+ * @elem: the integer to check
  *
- * Return: Nothing.
+ * Return: 0 if false, something else otherwise.
  */
-void simple_print_buffer(char *buffer, unsigned int size)
+int is_98(int elem)
 {
-	unsigned int i;
+	return (98 == elem);
+}
 
-	i = 0;
-	while (i < size)
-	{
-		if (i % 10)
-		{
-			printf(" ");
-		}
-		if (!(i % 10) && i)
-		{
-			printf("\n");
-		}
-		printf("0x%02x", buffer[i]);
-		i++;
-	}
-	printf("\n");
+/**
+ * is_strictly_positive - check if a number is greater than 0
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int is_strictly_positive(int elem)
+{
+	return (elem > 0);
+}
+
+/**
+ * abs_is_98 - check if the absolute value of a number is 98
+ * @elem: the integer to check
+ *
+ * Return: 0 if false, something else otherwise.
+ */
+int abs_is_98(int elem)
+{
+	return (elem == 98 || -elem == 98);
 }
 
 /**
@@ -38,13 +41,14 @@ void simple_print_buffer(char *buffer, unsigned int size)
  */
 int main(void)
 {
-	char *a;
+	int array[20] = {0, -98, 98, 402, 1024, 4096, -1024, -98, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 98};
+	int index;
 
-	a = _calloc(98, sizeof(char));
-	strcpy(a, "Best");
-	strcpy(a + 4, " School! :)\n");
-	a[97] = '!';
-	simple_print_buffer(a, 98);
-	free(a);
+	index = int_index(array, 20, is_98);
+	printf("%d\n", index);
+	index = int_index(array, 20, abs_is_98);
+	printf("%d\n", index);
+	index = int_index(array, 20, is_strictly_positive);
+	printf("%d\n", index);
 	return (0);
 }

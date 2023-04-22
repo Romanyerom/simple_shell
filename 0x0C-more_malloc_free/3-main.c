@@ -1,47 +1,43 @@
-#include "main.h"
-#include <stdio.h>
+#include "function_pointers.h"
 #include <stdlib.h>
-#include <string.h>
-
+#include <stdio.h>
+#include "3-calc.h"
 /**
- * simple_print_buffer - prints buffer in hexa
- * @buffer: the address of memory to print
- * @size: the size of the memory to print
- *
- * Return: Nothing.
- */
-void simple_print_buffer(int *buffer, unsigned int size)
-{
-	unsigned int i;
-
-	i = 0;
-	while (i < size)
-	{
-		if (i % 10)
-		{
-			printf(" ");
-		}
-		if (!(i % 10) && i)
-		{
-			printf("\n");
-		}
-		printf("0x%02x", buffer[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-/**
- * main - check the code
+ * main - Prints the result of simple operations.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
  *
  * Return: Always 0.
  */
-int main(void)
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
-	int *a;
+	int num1, num2;
+	char *op;
 
-	a = array_range(0, 10);
-	simple_print_buffer(a, 11);
-	free(a);
+	if (argc != 4)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+
+	num1 = atoi(argv[1]);
+	op = argv[2];
+	num2 = atoi(argv[3]);
+
+	if (get_op_func(op) == NULL || op[1] != '\0')
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
+	if ((*op == '/' && num2 == 0) ||
+	    (*op == '%' && num2 == 0))
+	{
+		printf("Error\n");
+		exit(100);
+	}
+
+	printf("%d\n", get_op_func(op)(num1, num2));
+
 	return (0);
 }
