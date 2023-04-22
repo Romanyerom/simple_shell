@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-char *_strcpy(char *dest, char *src)
+
+int _putchar(char c)
 {
-	return strcpy(dest, src);
+	return putchar(c);
 }
