@@ -1,3 +1,1 @@
-# alx-low_level_programming
-# simple_shell
-# simple_shell
+This is 0x16. C - Simple Shell

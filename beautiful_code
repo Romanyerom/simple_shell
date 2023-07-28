@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <shell.h>
+
+
+/* shell.h */
+struct liststr
+{
+char *str;
+struct liststr *next;
+};
+
+struct passinf
+{
+    char *path;
+    char **args;
+};
+
+struct builtin
+{
+    char *cmd;
+    int (*builtin_func)(struct passinfo *);
+};
+
+/* Function to read input from stdin and return a string */
+char *read_line(void);
+
+/* Function to parse the input string into an array of arguments */
+char **parse_input(char *input);
+
+int main(void)
+{
+    char *input;
+    char **arguments;
+
+    input = read_line();
+    if (!input)
+    {
+        printf("Error reading input\n");
+        return 1;
+    }
+
+    arguments = parse_input(input);
+    if (!arguments)
+    {
+        printf("Error parsing input\n");
+        free(input);
+        return 1;
+    }
+
+    /* Print the parsed arguments */
+    int i = 0;
+    while (arguments[i] != NULL)
+    {
+        printf("Argument %d: %s\n", i, arguments[i]);
+        i++;
+    }
+
+    /* Free allocated memory */
+    free(input);
+    free(arguments);
+
+    return 0;
+}
