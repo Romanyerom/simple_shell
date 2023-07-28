@@ -6,6 +6,7 @@
  * @delimiters: the delimiters used to split the string
  * Return: a pointer to an array of strings, or NULL on failure
  */
+
 char **split_string(char *str, char *delimiters)
 {
 	int i, j, k, m, numwords = 0;
@@ -42,13 +43,12 @@ char **split_string(char *str, char *delimiters)
 				while (!is_delimiter(str[i + k], delimiters) && str[i + k] != '\0')
 				k++;
 				s[j] = malloc((k + 1) * sizeof(char));
+
 				if (!s[j]
-					{
 					for (k = 0; k < j; k++)
 					free(s[k]);
 					free(s);
 					return (NULL);
-					}
 
 					for (m = 0; m < k; m++)
 					s[j][m] = str[i++];
@@ -56,6 +56,7 @@ char **split_string(char *str, char *delimiters)
 					}
 
 					s[j] = NULL;
+
 					return (s);
 					}
 
@@ -72,12 +73,13 @@ char **split_string_single_delim(char *str, char delimiter)
 	char **s;
 
 	if (str == NULL || str[0] == '\0')
-		return NULL;
+		return (NULL);
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if ((str[i] != delimiter && str[i + 1] == delimiter) ||
-				(str[i] != delimiter && str[i + 1] == '\0') || str[i + 1] == delimiter)
+		if ((str[i] != delimiter && str[i + 1] == delimiter)
+				(str[i] != delimiter && str[i + 1] == '\0')
+				str[i + 1] == delimiter)
 		{
 			numwords++;
 		}
@@ -87,6 +89,7 @@ char **split_string_single_delim(char *str, char delimiter)
 		return (NULL);
 
 	s = malloc((numwords + 1) * sizeof(char *));
+
 	if (!s)
 		return (NULL);
 
@@ -96,10 +99,12 @@ char **split_string_single_delim(char *str, char delimiter)
 			i++;
 
 		k = 0;
+
 		while (str[i + k] != delimiter && str[i + k] != '\0')
 			k++;
 
 		s[j] = malloc((k + 1) * sizeof(char));
+
 		if (!s[j])
 		{
 			for (k = 0; k < j; k++)
@@ -114,5 +119,6 @@ char **split_string_single_delim(char *str, char delimiter)
 	}
 
 	s[j] = NULL;
+
 	return (s);
 }
